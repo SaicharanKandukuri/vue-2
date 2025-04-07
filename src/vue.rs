@@ -8,8 +8,8 @@ use zed_extension_api::serde_json::json;
 use zed_extension_api::settings::LspSettings;
 use zed_extension_api::{self as zed, serde_json, Result};
 
-const SERVER_PATH: &str = "node_modules/@vue/language-server/bin/vue-language-server.js";
-const PACKAGE_NAME: &str = "@vue/language-server";
+const SERVER_PATH: &str = "node_modules/vls/dist/vueServerMain.js";
+const PACKAGE_NAME: &str = "vls";
 
 const TYPESCRIPT_PACKAGE_NAME: &str = "typescript";
 
@@ -168,9 +168,83 @@ impl zed::Extension for VueExtension {
                     "typescript": {
                         "tsdk": self.typescript_tsdk_path
                     },
-                    "vue": {
-                        "hybridMode": false,
-                    }
+                    "vetur": {
+                        "ignoreProjectWarning": false,
+                        "useWorkspaceDependencies": false,
+                        "completion": {
+                            "autoImport": true,
+                            "scaffoldSnippetSources": {
+                                "workspace": "💼",
+                                "user": "🗒️",
+                                "vetur": "✌"
+                            },
+                            "tagCasing": "kebab"
+                        },
+                        "grammar": {
+                            "customBlocks": {
+                                "docs": "md",
+                                "i18n": "json"
+                            }
+                        },
+                        "validation": {
+                            "template": true,
+                            "templateProps": false,
+                            "interpolation": true,
+                            "style": true,
+                            "script": true
+                        },
+                        "format": {
+                        "enable": true,
+                        "options": {
+                            "tabSize": 2,
+                            "useTabs": false
+                        },
+                        "defaultFormatter": {
+                            "html": "prettier",
+                            "pug": "prettier",
+                            "css": "prettier",
+                            "postcss": "prettier",
+                            "scss": "prettier",
+                            "sass": "sass-formatter",
+                            "less": "prettier",
+                            "stylus": "stylus-supremacy",
+                            "js": "prettier-eslint",
+                            "ts": "prettier"
+                        },
+                        "defaultFormatterOptions": {
+                            "js-beautify-html": {
+                                "wrap_attributes": "force-expand-multiline"
+                            },
+                            "prettyhtml": {
+                                "printWidth": 100,
+                                "singleQuote": false,
+                                "wrapAttributes": false,
+                                "sortAttributes": false
+                            }
+                        },
+                        "styleInitialIndent": false,
+                            "scriptInitialIndent": false
+                        },
+                        "languageFeatures": {
+                            "codeActions": true,
+                            "updateImportOnFileMove": true,
+                            "semanticTokens": true
+                        },
+                        "trace": {
+                            "server": "verbose"
+                        },
+                        "dev": {
+                            "vlsPath": "",
+                            "vlsPort": -1,
+                            "logLevel": "DEBUG"
+                        },
+                        "experimental": {
+                            "templateInterpolationService": false
+                        },
+                        "underline": {
+                            "refValue": true
+                        }
+                    },
                 })
             });
 
