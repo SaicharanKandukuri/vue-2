@@ -1,9 +1,13 @@
-id = "vue 2"
+id = "vue-two-vetur"
 name = "Vue 2"
-description = "Vue support with vetur."
+description = "Vue 2 support for zed with vetur."
 version = "0.0.1"
 schema_version = 1
-authors = ["Zed Industries <support@zed.dev>", "Saicharan Kandukuri <zx@zman.dev>", "Mohit Kota <indianstar725@gmail.com>"]
+authors = [
+    "Zed Industries <support@zed.dev>",
+    "Saicharan Kandukuri <zx@zman.dev>",
+    "Mohit Kota <indianstar725@gmail.com>",
+]
 repository = "https://github.com/SaicharanKandukuri/vue-2"
 
 [language_servers.vue-two-vetur]
